@@ -1,0 +1,24 @@
+:root{--browser-screen:rgb(40,40,40);--browser-control-background:rgb(40,40,40);--browser-control-foreground:rgb(255,255,255)}
+#work-progress{flex:none;padding:9px 16px;color:var(--fg2);font-size:13px;border-top:1px solid var(--sep);display:flex;gap:10px;align-items:center;min-height:38px}
+#work-progress[hidden]{display:none}
+#work-progress-text{flex:1;min-width:0;overflow-wrap:anywhere}
+#work-progress-time{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--fg3)}
+#browser-view{flex:none;border-bottom:1px solid var(--sep);background:var(--bg);max-height:66%;overflow:auto}
+#browser-view[hidden]{display:none!important}
+#browser-toolbar{display:flex;align-items:center;gap:8px;padding:8px 12px;min-height:40px}
+#browser-toolbar button,#browser-control{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--liquid-border-strong);border-radius:8px;padding:8px 12px;cursor:pointer}
+#browser-toggle{display:flex;align-items:center;gap:8px}
+#browser-toggle svg{width:18px;height:18px;flex:none}
+#browser-state{color:var(--fg2);font-size:12px;flex:1;min-width:0;overflow-wrap:anywhere}
+#browser-tabs{max-width:140px;background:var(--bg);color:var(--fg);border:1px solid var(--sep);font:inherit;font-size:12px}
+#browser-stage{position:relative;width:min(100%,487px);margin:0 auto;background:var(--browser-screen);aspect-ratio:1280/1029}
+#browser-stage[hidden]{display:none}
+#browser-canvas{display:block;width:100%;height:100%;cursor:none;outline:none;touch-action:none}
+#browser-stage.human #browser-canvas{cursor:default}
+#browser-control{position:absolute!important;right:12px;bottom:12px;font-size:13px;max-width:calc(100% - 24px);background:var(--browser-control-background)!important;color:var(--browser-control-foreground)!important;box-shadow:0 2px 12px var(--liquid-shadow);z-index:2}
+#browser-toolbar input{min-width:0;width:120px;color:var(--fg);background:var(--bg);border:1px solid var(--sep)}
+#browser-control:disabled{opacity:.6;cursor:wait}
+#browser-empty{padding:12px;color:var(--fg2);font-size:13px}
+#browser-empty[hidden]{display:none}
+#media-lightbox[aria-hidden="true"]{visibility:hidden;pointer-events:none}
+#media-lightbox[aria-hidden="true"] *{pointer-events:none!important}

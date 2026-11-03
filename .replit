@@ -1,0 +1,54 @@
+entrypoint = "main.py"
+modules = ["python-3.11", "nodejs-24"]
+
+[nix]
+channel = "stable-25_05"
+packages = ["libiconv", "libxcrypt"]
+
+[unitTest]
+language = "python3"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]
+
+[deployment]
+run = ["python3", "main.py"]
+deploymentTarget = "autoscale"
+
+[userenv]
+
+[userenv.shared]
+CHAT_DEPLOYMENT_MAX_REQUEST_MS = "21744000"
+CHAT_NIXPKGS_REV = "1f607aa79b6356ed45d3cd3c8079c196e79efa2c"
+CHAT_NIX_INSTALLER_SHA256 = "69d0fe8fba8fe88f94c98b09964691ac9950abc7ecbf2ba861dc0533cfd901e9"
+CHAT_NIX_VERSION = "2.35.3"
+MUSE_WONDER_MODEL_NAME = "muse-wonder-1.0"
+MODEL_API_URL = "https://api.meta.ai/v1/responses"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 main.py"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
